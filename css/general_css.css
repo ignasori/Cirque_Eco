@@ -1,0 +1,122 @@
+@font-face { /* for non-IE */   
+    font-family: 'tuitypelight2';
+    src: url("fonts/TUITypeLt.ttf") format("truetype");
+}
+
+@font-face { /* IE */   
+    font-family: 'tuitypelight2_IE';
+    src: url("fonts/tuitypelt-webfont.eot"); 
+}
+
+@font-face {
+    font-family: 'tuitypeBold';
+    src: url("fonts/TUITypeLtBd.ttf") format("truetype"); /* non IE */
+}
+
+@font-face {
+    font-family: 'tuitypeBold_IE';
+    src: url("fonts/tuitypeltbd-webfont.eot"); /* IE */
+}
+
+* {
+    font-family: tuitypelight2,tuitypelight2_IE;
+}
+
+#page {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+
+
+/* Text Style */
+
+.text-counter {
+    font-size: 72px;
+    font-weight: bold;
+    color: white;
+}
+
+.big-title-red {
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #d20202;
+    line-height: 42px;
+}
+
+.title-red {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #d20202;
+    line-height: 25px;
+}
+
+.subtitle-black {
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 25px;
+}
+
+.normal-text {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 25px;
+}
+
+
+/* Left Menu Style */
+
+#navigation-menu {
+    background-image: url('../img/elements/bg_Menu.png');
+    background-size: 100% 100%;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 65px;
+}
+
+#navigation-menu .items {
+    position: absolute;
+    right: 0px;
+    top: 18%;
+}
+
+#navigation-menu .item {
+    width: 65px;
+    height: 65px;
+}
+
+#navigation-menu .item img {
+    width: 65px;
+    height: 65px;
+}
+
+#navigation-menu .item.zoom {
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    background-image: url(../img/elements/bg_zoom.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: none;
+    cursor: pointer;
+    width: 64px;
+    height: 44px;
+}
+
+#navigation-menu .item.zoom img {
+    width: 44px;
+    height: 44px;
+}
+
+.pointer {
+    cursor: pointer;
+}
