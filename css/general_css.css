@@ -1,122 +1,294 @@
-@font-face { /* for non-IE */   
-    font-family: 'tuitypelight2';
-    src: url("fonts/TUITypeLt.ttf") format("truetype");
-}
+/*@font-face { /* for non-IE */   
+//    font-family: 'tuitypelight2';
+//    src: url("fonts2/TUITypeLt.ttf") format("truetype");
+//}
 
-@font-face { /* IE */   
-    font-family: 'tuitypelight2_IE';
-    src: url("fonts/tuitypelt-webfont.eot"); 
-}
+//@font-face { /* IE */   
+//    font-family: 'tuitypelight2_IE';
+//    src: url("fonts2/tuitypelt-webfont.eot"); 
+//}
 
-@font-face {
-    font-family: 'tuitypeBold';
-    src: url("fonts/TUITypeLtBd.ttf") format("truetype"); /* non IE */
-}
+//@font-face {
+//    font-family: 'tuitypeBold';
+//    src: url("fonts2/TUITypeLtBd.ttf") format("truetype"); /* non IE */
+//}
 
-@font-face {
-    font-family: 'tuitypeBold_IE';
-    src: url("fonts/tuitypeltbd-webfont.eot"); /* IE */
-}
+//@font-face {
+//    font-family: 'tuitypeBold_IE';
+//    src: url("fonts2/tuitypeltbd-webfont.eot"); /* IE */
+//}
 
 * {
-    font-family: tuitypelight2,tuitypelight2_IE;
+    font-family: 'Alegreya Sans';
 }
 
-#page {
+#page, html, body, section {
     height: 100%;
-    width: 100%;
-    position: fixed;
-    left: 0px;
-    top: 0px;
+    margin: 0;
     overflow: hidden;
 }
 
-
-/* Text Style */
-
-.text-counter {
-    font-size: 72px;
-    font-weight: bold;
-    color: white;
-}
-
-.big-title-red {
-    font-size: 36px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #d20202;
-    line-height: 42px;
-}
-
-.title-red {
-    font-size: 22px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #d20202;
-    line-height: 25px;
-}
-
-.subtitle-black {
-    font-size: 16px;
-    font-weight: normal;
-    text-transform: uppercase;
-    line-height: 25px;
-}
-
-.normal-text {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 25px;
-}
-
-
-/* Left Menu Style */
-
-#navigation-menu {
-    background-image: url('../img/elements/bg_Menu.png');
+#page {
+    display: none;
+    background-image: url('../img/images/bg-frontpage1.jpg');
     background-size: 100% 100%;
+    background-repeat: repeat-x;
+}
+
+#home .background.left {
+    display: none;
+    background-image: url('../img/images/bg-frontpage-left.jpg');
+    background-position: left;
+}
+
+#home .background.right {
+    display: none;
+    background-image: url('../img/images/bg-frontpage-right.jpg');
+    background-position: right;
+}
+
+#home .background {
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 50%;
+    float: left;
+    background-size: auto 100%; 
+}
+
+#home .center {
+    top: 150%;
+    position: absolute;
+    width: 100%;
+    height: 380px;
+    margin-top: -190px;
+}
+
+#home .center .logo {
+    width: 191px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#home .center .title {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: green;
+}
+
+#home .center .separator {
+    width: 440px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#home .center .separator div {
+    background-color: grey;
+    width: 200px;
+    height: 2px;
+    float: left;
+    margin-top: 10px
+}
+
+#home .center .separator img {
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#home .center .text {
+    text-align: center;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+    color: grey;
+}
+
+#fullbackground, #fullbackground2 {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    background-size: auto 100%;
+    background-image: url('../img/images/bg-frontpage.jpg');
+}
+
+#fullscreen {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    height: 75%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url('../img/images/full-screen+.png');
+    background-size: auto 100%;
+}
+
+#fullscreen.open {
+    background-image: url('../img/images/full-screen-.png');
+}
+
+#fullscreen .click {
+    width: 4%;
+    height: 10%;
+    position: absolute;
+    bottom: 4%;
+    //background: black;
+    left: 30px;
+    cursor: pointer;
+}
+
+#container {
+    width: 100%;
     height: 100%;
     position: absolute;
-    right: 0px;
-    top: 0px;
-    width: 65px;
+    top: 0;
+    //left: 30%;
+    //left: 81%;
+    left: 110%;
 }
 
-#navigation-menu .items {
+#container .content-color {
     position: absolute;
-    right: 0px;
-    top: 18%;
+    top: 0;
+    //left: -35px;
+    left: 15%;
+    height: 100%;
+    width: 100%;
+    background-size: auto 100%;
 }
 
-#navigation-menu .item {
-    width: 65px;
-    height: 65px;
-}
-
-#navigation-menu .item img {
-    width: 65px;
-    height: 65px;
-}
-
-#navigation-menu .item.zoom {
-    position: absolute;
-    bottom: 0px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    background-image: url(../img/elements/bg_zoom.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+#container .content-color.content2 {
     display: none;
-    cursor: pointer;
-    width: 64px;
-    height: 44px;
 }
 
-#navigation-menu .item.zoom img {
-    width: 44px;
-    height: 44px;
+#container .content-white {
+    position: absolute;
+    top: 0;
+    //left: 35px;
+    height: 100%;
+    width: 100%;
+    background-size: auto 100%;
 }
 
-.pointer {
+#container .content-white nav {
+    height: 100%;
+}
+
+#container .content-white nav .menuItem {
+    height: 16.67%;
+    position: relative;
+}
+
+#container .content-white nav .menuItem img {
+    position: relative;
+    top: 25%;
     cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+#container .content-white nav .menuItem.item-1 {
+    left: 12%;
+}
+
+#container .content-white nav .menuItem.item-2 {
+    left: 10%;
+}
+
+#container .content-white nav .menuItem.item-3 {
+    left: 8%;
+}
+
+#container .content-white nav .menuItem.item-4 {
+    left: 6%;
+}
+
+#container .content-white nav .menuItem.item-5 {
+    left: 4%;
+}
+
+#container .content-white nav .menuItem.item-6 {
+    left: 2%;
+}
+
+#container .content1 .slide {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    width: 50%;
+    margin-top: -200px;
+}
+
+#container .content1 .slide .slideContent {
+    width: 75%;
+}
+
+#container .content-white .slide .slideContent {
+    float: left;
+}
+
+#container .content-color .slide .slideContent {
+    float: right;
+}
+
+#container .content1 .slide .slideContent .slideLogo {
+    text-align: center;
+}
+
+#container .content1 .slide .slideContent h2 {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    color: #d17254;
+}
+
+#container .content1 .slide .slideContent .line {
+    height: 1px;
+    background-color: #d17254;
+}
+
+#container .content1 .slide .slideContent p {
+    font-size: 14px;
+    text-align: justify;
+}
+
+#container .content1 .slide .slideContent p span {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+#container .content1 .slide .navigation {
+    width: 25%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -65px;
+}
+
+#container .content-white .slide .navigation {
+    float: right;
+}
+
+#container .content-color .slide .navigation {
+    float: right;
+}
+
+#container .content1 .slide .navigation img {
+    cursor: pointer;
+}
+
+#container .content1 .slide .navigation .numbers p {
+    font-size: 16px;
+    line-height: 40px;
+}
+
+#container .content1 .slide .navigation .numbers p span {
+    font-size: 30px;
+    font-weight: bold;
 }
