@@ -1,7 +1,7 @@
 $(document).ready(function () {
     main.init();
 });
-
+ 
 main = {
     init: function () {
         main.bindEvents();
