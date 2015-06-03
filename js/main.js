@@ -166,4 +166,4 @@ main = {
         var image = $(this).data('image');
         $(this).children('img').attr('src', image);
     }
-};
+ };
