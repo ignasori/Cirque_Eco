@@ -112,7 +112,9 @@
     height: 100%;
     width: 100%;
     display: none;
-    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     background-image: url('../img/images/bg-frontpage.jpg');
 }
 
@@ -171,7 +173,8 @@
     //left: 35px;
     height: 100%;
     width: 100%;
-    background-size: auto 100%;
+    //background-size: auto 100%;
+    background-size: contain;
 }
 
 #container .content-white nav {
@@ -218,13 +221,21 @@
 #container .content1 .slide {
     position: absolute;
     top: 50%;
-    left: 20%;
-    width: 50%;
+    width: 550px;
     margin-top: -200px;
 }
 
+#container .content1.content-white .slide {
+    left: 20%;
+}
+
+#container .content1.content-color .slide {
+    left: 10%;
+}
+
 #container .content1 .slide .slideContent {
-    width: 75%;
+    //width: 75%;
+    width: 460px;
 }
 
 #container .content-white .slide .slideContent {
@@ -257,26 +268,31 @@
     text-align: justify;
 }
 
-#container .content1 .slide .slideContent p span {
+#container .content1 .slide .slideContent p span.bigLetter {
     font-size: 24px;
     text-transform: uppercase;
 }
 
 #container .content1 .slide .navigation {
-    width: 25%;
+    //width: 25%;
     text-align: center;
     position: absolute;
     top: 50%;
-    right: 0;
+    //right: 0;
     margin-top: -65px;
+
 }
 
 #container .content-white .slide .navigation {
-    float: right;
+    //float: right;
+    left: 460px;
+    margin-left: 50px;
 }
 
 #container .content-color .slide .navigation {
-    float: right;
+    //float: right;
+    right: 460px;
+    margin-right: 50px;
 }
 
 #container .content1 .slide .navigation img {
@@ -288,7 +304,34 @@
     line-height: 40px;
 }
 
+#container .content1.content-color .slide .navigation .numbers p {
+    color: white;
+}
+
 #container .content1 .slide .navigation .numbers p span {
     font-size: 30px;
     font-weight: bold;
+}
+
+#container .content1 .slide .slideContent .image {
+    float: left;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#container .content1 .slide .slideContent .image:nth-child(1), #container .content1 .slide .slideContent .image:nth-child(3) {
+    margin-right: 10px;
+}
+
+#container .content1 .slide .slideContent .image .titleImage {
+    position: absolute;
+}
+
+#container .content1 .slide .slideContent .image .titleImage p {
+    text-align: center;
+    position: absolute;
+    width: 225px;
+    bottom: 73px;
+    color: white;
+    font-size: 18px;
 }

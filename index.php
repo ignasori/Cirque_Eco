@@ -1,5 +1,7 @@
 <?php include './php/header.php'; ?>
 <div id="page">
+    <div id="fullbackground"></div>
+    <div id="fullbackground2"></div>
     <section id="home">
         <!--<div class="background left "></div>
         <div class="background right"></div>-->
@@ -18,21 +20,19 @@
             </div>
         </div>
     </section>
-    <div id="fullbackground"></div>
-    <div id="fullbackground2"></div>
     <div id="fullscreen">
         <div class="click"></div>
     </div>
     <div id="container">
         <div class="content-color content1">
-             <!--
-            *******************************
-            SLIDES WITH BACKGROUND IN COLOR
-            *******************************
+            <!--
+           *******************************
+           SLIDES WITH BACKGROUND IN COLOR
+           *******************************
             -->
             <div class="content">
                 <div class="slide slide-1" data-white="img/images/bg-menu-2.png" data-color="img/images/bg-logo2.png" data-background="img/images/background01.jpg">
-
+                    <?php require_once './slides/slide1.php'; ?>
                 </div>
                 <div class="slide slide-3" data-white="img/images/bg-menu-4.png" data-color="img/images/bg-logo4.png" data-background="img/images/background02.jpg">
 
@@ -83,8 +83,8 @@
             </div>
         </div>
     </div>
-        
-    
-    
+
+
+
 </div>
 <?php include './php/footer.php'; ?>
