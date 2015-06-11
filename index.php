@@ -6,13 +6,13 @@
         <!--<div class="background left "></div>
         <div class="background right"></div>-->
         <div class="center">
-            <div class="logo"><img src="img/images/Logo_Cirque_Eco.png" alt="crique-eco-logo"></div>
+            <div class="logo"><img src="img/icons/Logo_Cirque_Eco.png" alt="crique-eco-logo"></div>
             <div class="title">
                 <h1>ENTERTAIMENT THAT DOESN'T COST THE EARTH!</h1>
             </div>
             <div class="separator">
                 <div></div>
-                <img src="img/images/green_leaf.png" alt="leaf">
+                <img src="img/icons/green_leaf.png" alt="leaf">
                 <div></div>
             </div>
             <div class="text">
@@ -47,22 +47,22 @@
         <div class="content-white content1">
             <nav>
                 <div class="menuItem item-1">
-                    <img src="img/images/iconmenu_1.png" alt="menuIcon"/>
+                    <img src="img/icons/iconmenu_1.png" alt="menuIcon"/>
                 </div>
                 <div class="menuItem item-2">
-                    <img src="img/images/iconmenu_2.png" alt="menuIcon"/>
+                    <img src="img/icons/iconmenu_2.png" alt="menuIcon"/>
                 </div>
                 <div class="menuItem item-3">
-                    <img src="img/images/iconmenu_3.png" alt="menuIcon"/>
+                    <img src="img/icons/iconmenu_3.png" alt="menuIcon"/>
                 </div>
                 <div class="menuItem item-4">
-                    <img src="img/images/iconmenu_4.png" alt="menuIcon"/>
+                    <img src="img/icons/iconmenu_4.png" alt="menuIcon"/>
                 </div>
                 <div class="menuItem item-5">
-                    <img src="img/images/iconmenu_5.png" alt="menuIcon"/>
+                    <img src="img/icons/iconmenu_5.png" alt="menuIcon"/>
                 </div>
                 <div class="menuItem item-6">
-                    <img src="img/images/iconmenu_6.png" alt="menuIcon"/>
+                    <img src="img/icons/iconmenu_6.png" alt="menuIcon"/>
                 </div>
             </nav>
             <!--

@@ -1,19 +1,24 @@
 $(document).ready(function () {
     main.init();
 });
- 
+
 main = {
     init: function () {
+        $('.swipebox').swipebox();
         main.bindEvents();
         main.homeStart();
     },
     menu: true,
     index: null,
-    leftPosition: null,
+    fullScreenOptions: {},
+    centers: [],
+    currentSlide: null,
     bindEvents: function () {
         $(".content-white nav .menuItem img").click(main.menuClick);
         $("#fullscreen .click").click(main.fullScreenClick);
         $("#container .content1 .slide .slideContent .image").hover(main.changeImageToReal, main.changeImageToColor);
+        $('#container .content1 .slide .navigation .arrowDown').click(main.nextSlide);
+        $('#container .content1 .slide .navigation .arrowUp').click(main.prevSlide);
     },
     homeStart: function () {
         var urlWhite = $('#container .content .slide-0').data('white');
@@ -21,8 +26,8 @@ main = {
         $('#page').fadeIn(700, function () {
             $('#fullbackground').fadeIn(1000, function () {
                 $('#home .center .title, #home .center .separator, #home .center .text').hide();
-                $('#home .center').animate({top: '50%'}, 700, function () {
-                    $('#home .center .title, #home .center .separator, #home .center .text').fadeIn(700, function () {
+                $('#home .center').animate({top: '50%'}, 1000, function () {
+                    $('#home .center .title, #home .center .separator, #home .center .text').fadeIn(1000, function () {
                         $('#container').animate({left: "80%"}, 700, function () {
                             var time = 0;
                             $(".content-white nav .menuItem").each(function () {
@@ -36,27 +41,29 @@ main = {
         });
     },
     menuClick: function () {
-        main.index = $(this).parent().index();
-        if (main.menu) {
-            var left = $('#container').position().left;
-            left = left - 650;
-            $('#home .center').animate({top: '150%'}, 700, function () {
-                $('#container').css('left', left + 'px');
-                $("#container .content-white").css('left', '650px');
-                $("#container .content-color").css('left', '115%');
+        if (main.index !== $(this).parent().index()) {
+            main.index = $(this).parent().index();
+            main.hideSlideContent();
+            if (main.menu) {
+                var left = $('#container').position().left;
+                left = left - 650;
+                $('#home .center').animate({top: '150%'}, 700, function () {
+                    $('#container').css('left', left + 'px');
+                    $("#container .content-white").css('left', '650px');
+                    $("#container .content-color").css('left', '115%');
+                    main.changeBackground();
+                });
+            } else {
                 main.changeBackground();
-            });
-        } else {
-            main.changeBackground();
+            }
         }
-        main.hideSlideContent();
     },
     chooseSlide: function () {
         var color = false;
         if ($('#container .content .slide-' + main.index).parent().parent().hasClass("content-color")) {
             color = true;
         }
-
+        main.currentSlide = 0;
         if (color) {
             $('#container .content-color').animate({left: '-45px'}, 700);
             $("#container .content-white").animate({left: '650px'}, 700, main.showContent);
@@ -96,9 +103,8 @@ main = {
         main.chooseSlide();
     },
     hideSlideContent: function () {
-        var margin = $('#container .content .slide-' + main.index).height() / 2;
-        $('#container .content .slide-' + main.index).css('margin-top', '-' + margin + 'px');
-        var height = $('#page').height();
+        main.calculateCenter();
+        var height = screen.height;
         setTimeout(function () {
             $('#container .content1 .slide-' + main.index + ' .slideContent .slideLogo').css('margin-top', height + "px");
             $('#container .content1 .slide-' + main.index + ' .slideContent .title-slide').css('margin-top', height + "px");
@@ -108,29 +114,41 @@ main = {
             $('#container .content1 .slide-' + main.index + ' .slideContent .image').css('margin-top', height + "px");
             $('#container .content1 .slide-' + main.index + ' .slideContent .image p').hide();
 
-            $('#container .content1 .slide-' + main.index + ' .navigation').css('margin-top', "-" + height + "px"); //default margin-top: -65px
-            $('#container .content1 .slide-' + main.index + ' .navigation .arrowDown img').css('margin-top', height + "px");
-            $('#container .content1 .slide-' + main.index + ' .navigation img').hide();
+            $('#container .content1 .slide-' + main.index + ' .navigation').css('margin-top', "-215px"); //default margin-top: -65px
+            $('#container .content1 .slide-' + main.index + ' .navigation .arrowDown img').css('margin-top', "150px");
+            $('#container .content1 .slide-' + main.index + ' .navigation img').css('opacity', 0);
             $('#container .content1 .slide-' + main.index + ' .navigation .numbers').hide();
+
+            $('#container .content1 .slide-' + main.index + ' .slideContent .itemSlide').hide();
         }, 100);
-        var delay = ((main.menu) ? 1500 : 800);
-        setTimeout(function () {
-            main.showContent(0);
-        }, delay);
     },
-    showContent: function (slide) {
-        if ($('#container .content1 .slide-' + main.index + ' .itemSlide.text-slide').length > 0) {
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(slide).find('.slideLogo').animate({marginTop: 0}, 700);
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(slide).find('.title-slide').delay(300).animate({marginTop: 0}, 700);
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(slide).find('.line').delay(800).show('slide', {}, 400);
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(slide).find('.textContent').delay(900).animate({marginTop: 0}, 700, function () {
-                 main.showNavigation();
+    calculateCenter: function () {
+        $('#container .content1 .slide-' + main.index + ' .slideContent .itemSlide').hide();
+        main.centers = [];
+        $('#container .content1 .slide-' + main.index + ' .slideContent .itemSlide').each(function () {
+            $(this).show();
+            main.centers.push($(this).height() / 2);
+        });
+        console.log(main.centers);
+    },
+    showContent: function () {
+        main.updateNavigation();
+        $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "0px"}, 700);
+        $('#container .content1 .slide-' + main.index + ' .slideContent .itemSlide').eq(main.currentSlide).show();
+        $('#container .content .slide-' + main.index).animate({marginTop: '-' + main.centers[main.currentSlide] + 'px'}, 700);
+        if ($('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).hasClass("text-slide")) {
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.slideLogo').animate({marginTop: 0}, 1000);
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.title-slide').delay(500).animate({marginTop: 0}, 1000, function () {
+                $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.line').show('slide', {}, 700);
             });
-        } else if ($('#container .content1 .slide-' + main.index + ' .itemSlide.images-slide').length > 0) {
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.textContent').delay(1500).animate({marginTop: 0}, 1000, function () {
+                main.showNavigation();
+            });
+        } else if ($('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).hasClass("images-slide") > 0) {
             var delay = 0;
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(slide).find('.image').each(function (index) {
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.image').each(function (index) {
                 $(this).delay(delay).animate({marginTop: 0}, 700, function () {
-                    if(index === 3){
+                    if (index === 3) {
                         $(this).find('p').fadeIn(700, function () {
                             main.showNavigation();
                         });
@@ -143,27 +161,62 @@ main = {
         }
     },
     showNavigation: function () {
-        $('#container .content1 .slide-' + main.index + ' .navigation img').delay(200).fadeIn(700);
+        $('#container .content1 .slide-' + main.index + ' .navigation .arrowUp img').animate({opacity: 1});
         $('#container .content1 .slide-' + main.index + ' .navigation').animate({marginTop: '-65px'}, 700);
-        $('#container .content1 .slide-' + main.index + ' .navigation .arrowDown img').animate({marginTop: 0}, 700);
-        $('#container .content1 .slide-' + main.index + ' .navigation .numbers').delay(1350).fadeIn(700);
+        $('#container .content1 .slide-' + main.index + ' .navigation .arrowDown img').delay(600).animate({opacity: 1, marginTop: 0}, 700);
+        $('#container .content1 .slide-' + main.index + ' .navigation .numbers').delay(700).fadeIn(1000);
+    },
+    nextSlide: function () {
+        if (main.currentSlide < ($('#container .content1 .slide-' + main.index + ' .itemSlide').length - 1)) {
+            var top = $('#container .content1 .slide-' + main.index + ' .navigation').position().top;
+            $('#container .content1 .slide-' + main.index + ' .navigation').css('top', top + "px");
+            var height = screen.height;
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "-" + height + "px"}, 700, function () {
+                $(this).hide();
+                main.currentSlide++;
+                main.showContent();
+            });
+        }
+    },
+    prevSlide: function () {
+        if (main.currentSlide > 0) {
+            var height = screen.height;
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: height + "px"}, 700, function () {
+                $(this).hide();
+                main.currentSlide--;
+                main.showContent();
+            });
+        }
+    },
+    updateNavigation: function () {
+        var total = $('#container .content1 .slide-' + main.index + ' .itemSlide').length;
+        $('#container .content1 .slide-' + main.index + ' .navigation .bigNumber').text(main.currentSlide + 1);
+        $('#container .content1 .slide-' + main.index + ' .navigation .total').text(total);
     },
     fullScreenClick: function () {
         if ($('#fullscreen').hasClass('open')) {
             $('#fullscreen').removeClass('open');
-            $('#container').animate({left: main.leftPosition + 'px'}, 700);
+            $('#container').animate({left: main.fullScreenOptions['leftPosition'] + 'px'}, 700);
+            if (main.fullScreenOptions['openColor']) {
+                $("#container .content-white").animate({left: '650px'}, 700);
+            }
         } else {
-            main.leftPosition = $('#container').position().left;
+            main.fullScreenOptions['openColor'] = false;
+            if ($("#container .content-white").position().left === 650) {
+                main.fullScreenOptions['openColor'] = true;
+            }
+            main.fullScreenOptions['leftPosition'] = $('#container').position().left;
+            $("#container .content-white").animate({left: '0px'}, 700);
             $('#fullscreen').addClass('open');
-            $('#container').animate({left: '110%'}, 700);
+            $('#container').animate({left: '80%'}, 700);
         }
     },
     changeImageToReal: function () {
         var image = $(this).data('hover');
-        $(this).children('img').attr('src', image);
+        $(this).children('a').children('img').attr('src', image);
     },
     changeImageToColor: function () {
         var image = $(this).data('image');
-        $(this).children('img').attr('src', image);
+        $(this).children('a').children('img').attr('src', image);
     }
- };
+};
