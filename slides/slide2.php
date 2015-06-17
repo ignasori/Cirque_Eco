@@ -1,23 +1,23 @@
 <div class="navigation">
     <div class="arrowUp">
-        <img src="img/icons/navigacion-1a.png" alt="navigationArrow"/>
+        <img src="img/icons/navigacion-3a.png" alt="navigationArrow"/>
     </div>
     <div class="numbers">
         <p><span class="bigNumber">1</span> - <span class="total">3</span></p>
     </div>
     <div class="arrowDown">
-        <img src="img/icons/navigacion-1b.png" alt="navigationArrow"/>
+        <img src="img/icons/navigacion-3b.png" alt="navigationArrow"/>
     </div>
 </div>
 <div class="slideContent">
     <div class="itemSlide text-slide">
         <div class="slideLogo">
-            <img src="img/icons/iconmenu_1.png" alt="iconMenu"/>
+            <img src="img/icons/iconmenu_3.png" alt="iconMenu"/>
         </div>
         <div class="title-slide">
-            <h2 style="color: #d17154">Lorem ipsum dolor sit amet, consectetur</h2>
+            <h2 style="color: #84a450">Lorem ipsum dolor sit amet, consectetur</h2>
         </div>
-        <div class="line" style="background-color: #d17154"></div>
+        <div class="line" style="background-color: #84a450"></div>
         <div class="data textContent">
             <p>
                 <span class="bigLetter">L</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum imperdiet gravida. Mauris quis dapibus ligula, quis blandit diam. Proin est dui, convallis in magna semper, facilisis dignissim tellus. Ut est lectus, consequat ac magna eu, convallis tristique arcu. Donec nec rutrum ante, et congue libero. Praesent sed luctus sem. Aliquam erat volutpat.
@@ -61,12 +61,12 @@
     </div>
     <div class="itemSlide video-slide">
         <div class="slideLogo">
-            <img src="img/icons/iconmenu_1.png" alt="iconMenu"/>
+            <img src="img/icons/iconmenu_3.png" alt="iconMenu"/>
         </div>
         <div class="title-slide">
-            <h2 style="color: #d17154">Lorem ipsum dolor sit amet, consectetur</h2>
+            <h2 style="color: #84a450">Lorem ipsum dolor sit amet, consectetur</h2>
         </div>
-        <div class="line" style="background-color: #d17154"></div>
+        <div class="line" style="background-color: #84a450"></div>
         <div class="textContent">
             <iframe width="460" height="260" src="https://www.youtube.com/embed/KCKwHkJuF9M" frameborder="0" allowfullscreen></iframe>
         </div>

@@ -35,10 +35,10 @@
                     <?php require_once './slides/slide1.php'; ?>
                 </div>
                 <div class="slide slide-3" data-white="img/images/bg-menu-4.png" data-color="img/images/bg-logo4.png" data-background="img/images/background02.jpg">
-
+                    <?php require_once './slides/slide3.php'; ?>
                 </div>
                 <div class="slide slide-5" data-white="img/images/bg-menu-6.png" data-color="img/images/bg-logo6.png" data-background="img/images/background03.jpg">
-
+                    <?php require_once './slides/slide5.php'; ?>
                 </div>
             </div>
         </div>
@@ -75,10 +75,10 @@
                     <?php require_once './slides/slide0.php'; ?>
                 </div>
                 <div class="slide slide-2" data-white="img/images/bg-menu-3.png" data-color="img/images/bg-logo3.png" data-background="img/images/background02.jpg">
-
+                    <?php require_once './slides/slide2.php'; ?>
                 </div>
                 <div class="slide slide-4" data-white="img/images/bg-menu-5.png" data-color="img/images/bg-logo5.png" data-background="img/images/background03.jpg">
-
+                    <?php require_once './slides/slide4.php'; ?>
                 </div>
             </div>
         </div>

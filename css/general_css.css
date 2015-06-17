@@ -255,12 +255,12 @@
     font-size: 18px;
     text-transform: uppercase;
     padding-bottom: 5px;
-    color: #d17254;
+    color: #3e3e3e;
 }
 
 #container .content1 .slide .slideContent .line {
     height: 1px;
-    background-color: #d17254;
+    background-color: #3e3e3e;
 }
 
 #container .content1 .slide .slideContent p {
@@ -268,9 +268,17 @@
     text-align: justify;
 }
 
+#container .content-color .slide .slideContent p {
+    color: white;
+}
+
 #container .content1 .slide .slideContent p span.bigLetter {
     font-size: 24px;
     text-transform: uppercase;
+}
+
+#container .content1 .slide .slideContent iframe {
+    margin-top: 20px;
 }
 
 #container .content1 .slide .navigation {

@@ -7,6 +7,7 @@ main = {
         $('.swipebox').swipebox();
         main.bindEvents();
         main.homeStart();
+        $('#container .content1 .slide').hide();
     },
     menu: true,
     index: null,
@@ -42,20 +43,34 @@ main = {
     },
     menuClick: function () {
         if (main.index !== $(this).parent().index()) {
-            main.index = $(this).parent().index();
-            main.hideSlideContent();
-            if (main.menu) {
-                var left = $('#container').position().left;
-                left = left - 650;
-                $('#home .center').animate({top: '150%'}, 700, function () {
-                    $('#container').css('left', left + 'px');
-                    $("#container .content-white").css('left', '650px');
-                    $("#container .content-color").css('left', '115%');
-                    main.changeBackground();
+            if (main.index !== null) {
+                var index = $(this).parent().index();
+                $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: screen.height + "px"}, 1000, function () {
+                    $('#container .content1 .slide-' + main.index).hide();
+                    main.index = index;
+                    $('#container .content1 .slide-' + main.index).show(500);
+                    main.changeSlide();
                 });
             } else {
-                main.changeBackground();
+                main.index = $(this).parent().index();
+                $('#container .content1 .slide-' + main.index).show();
+                main.changeSlide();
             }
+        }
+    },
+    changeSlide: function () {
+        main.hideSlideContent();
+        if (main.menu) {
+            var left = $('#container').position().left;
+            left = left - 650;
+            $('#home .center').animate({top: '150%'}, 700, function () {
+                $('#container').css('left', left + 'px');
+                $("#container .content-white").css('left', '650px');
+                $("#container .content-color").css('left', '115%');
+                main.changeBackground();
+            });
+        } else {
+            main.changeBackground();
         }
     },
     chooseSlide: function () {
@@ -129,14 +144,13 @@ main = {
             $(this).show();
             main.centers.push($(this).height() / 2);
         });
-        console.log(main.centers);
     },
     showContent: function () {
         main.updateNavigation();
         $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "0px"}, 700);
         $('#container .content1 .slide-' + main.index + ' .slideContent .itemSlide').eq(main.currentSlide).show();
         $('#container .content .slide-' + main.index).animate({marginTop: '-' + main.centers[main.currentSlide] + 'px'}, 700);
-        if ($('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).hasClass("text-slide")) {
+        if ($('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).hasClass("text-slide") || $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).hasClass("video-slide")) {
             $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.slideLogo').animate({marginTop: 0}, 1000);
             $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.title-slide').delay(500).animate({marginTop: 0}, 1000, function () {
                 $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).find('.line').show('slide', {}, 700);
