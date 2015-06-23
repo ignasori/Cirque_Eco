@@ -29,7 +29,12 @@ main = {
                 $('#home .center .title, #home .center .separator, #home .center .text').hide();
                 $('#home .center').animate({top: '50%'}, 1000, function () {
                     $('#home .center .title, #home .center .separator, #home .center .text').fadeIn(1000, function () {
-                        $('#container').animate({left: "80%"}, 700, function () {
+                        $('#home .center .separator img').show(300);
+                        $('#home .center .separator .line').eq(0).show('slide', {}, 300, function () {
+                            $('#home .center .separator .line').eq(1).show('slide', {}, 300);
+                        });
+                        var left = screen.width - 230;
+                        $('#container').animate({left: left + "px"}, 700, function () {
                             var time = 0;
                             $(".content-white nav .menuItem").each(function () {
                                 $(this).find('img').delay(time).animate({height: "62px", width: "58px"}, 700);
@@ -80,7 +85,7 @@ main = {
         }
         main.currentSlide = 0;
         if (color) {
-            $('#container .content-color').animate({left: '-45px'}, 700);
+            $('#container .content-color').animate({left: '-75px'}, 700);
             $("#container .content-white").animate({left: '650px'}, 700, main.showContent);
         } else {
             $('#container .content-white').animate({left: '0'}, 700, main.showContent);
@@ -89,7 +94,7 @@ main = {
         if (main.menu) {
             $("#fullscreen").effect("slide", {direction: "left"}, 1000);
             if (!color) {
-                $('#container .content-color').delay(400).animate({left: '-45px'}, 700);
+                $('#container .content-color').delay(400).animate({left: '-75px'}, 700);
             }
         }
         main.menu = false;
@@ -147,7 +152,7 @@ main = {
     },
     showContent: function () {
         main.updateNavigation();
-        $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "0px"}, 700);
+        $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "0px", opacity: 1}, 700);
         $('#container .content1 .slide-' + main.index + ' .slideContent .itemSlide').eq(main.currentSlide).show();
         $('#container .content .slide-' + main.index).animate({marginTop: '-' + main.centers[main.currentSlide] + 'px'}, 700);
         if ($('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).hasClass("text-slide") || $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).hasClass("video-slide")) {
@@ -185,7 +190,8 @@ main = {
             var top = $('#container .content1 .slide-' + main.index + ' .navigation').position().top;
             $('#container .content1 .slide-' + main.index + ' .navigation').css('top', top + "px");
             var height = screen.height;
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "-" + height + "px"}, 700, function () {
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).css('display', 'block');
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "-" + height + "px", opacity: 0}, 700, function () {
                 $(this).hide();
                 main.currentSlide++;
                 main.showContent();
@@ -195,7 +201,8 @@ main = {
     prevSlide: function () {
         if (main.currentSlide > 0) {
             var height = screen.height;
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: height + "px"}, 700, function () {
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).css('display', 'block');
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: height + "px", opacity: 0}, 700, function () {
                 $(this).hide();
                 main.currentSlide--;
                 main.showContent();
@@ -222,7 +229,8 @@ main = {
             main.fullScreenOptions['leftPosition'] = $('#container').position().left;
             $("#container .content-white").animate({left: '0px'}, 700);
             $('#fullscreen').addClass('open');
-            $('#container').animate({left: '80%'}, 700);
+            var left = screen.width - 230;
+            $('#container').animate({left: left + 'px'}, 700);
         }
     },
     changeImageToReal: function () {

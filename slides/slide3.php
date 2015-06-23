@@ -46,7 +46,7 @@
     </div>
     <div class="itemSlide text-slide">
         <div class="slideLogo">
-            <img src="img/icons/iconmenu_4.png" alt="iconMenu"/>
+            <img src="img/icons/iconmenu_4n.png" alt="iconMenu"/>
         </div>
         <div class="title-slide">
             <h2>Lorem ipsum dolor sit amet, consectetur</h2>

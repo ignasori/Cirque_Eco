@@ -11,9 +11,9 @@
                 <h1>ENTERTAIMENT THAT DOESN'T COST THE EARTH!</h1>
             </div>
             <div class="separator">
-                <div></div>
+                <div class="line"></div>
                 <img src="img/icons/green_leaf.png" alt="leaf">
-                <div></div>
+                <div class="line"></div>
             </div>
             <div class="text">
                 <p>"As a performance duo Dream State Circus travel to many different communities worldwide, bringing circus colour, fun, and entertainment everywhere we go"</p>
