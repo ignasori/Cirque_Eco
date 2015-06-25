@@ -33,7 +33,7 @@ main = {
                         $('#home .center .separator .line').eq(0).show('slide', {}, 300, function () {
                             $('#home .center .separator .line').eq(1).show('slide', {}, 300);
                         });
-                        var left = screen.width - 230;
+                        var left = $(window).width() - 230;
                         $('#container').animate({left: left + "px"}, 700, function () {
                             var time = 0;
                             $(".content-white nav .menuItem").each(function () {
@@ -229,7 +229,7 @@ main = {
             main.fullScreenOptions['leftPosition'] = $('#container').position().left;
             $("#container .content-white").animate({left: '0px'}, 700);
             $('#fullscreen').addClass('open');
-            var left = screen.width - 230;
+            var left = $(window).width() - 230;
             $('#container').animate({left: left + 'px'}, 700);
         }
     },
