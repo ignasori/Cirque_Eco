@@ -85,7 +85,7 @@ main = {
         }
         main.currentSlide = 0;
         if (color) {
-            $('#container .content-color').animate({left: '-75px'}, 700);
+            $('#container .content-color').animate({left: '-40px'}, 700);
             $("#container .content-white").animate({left: '650px'}, 700, main.showContent);
         } else {
             $('#container .content-white').animate({left: '0'}, 700, main.showContent);
@@ -94,7 +94,7 @@ main = {
         if (main.menu) {
             $("#fullscreen").effect("slide", {direction: "left"}, 1000);
             if (!color) {
-                $('#container .content-color').delay(400).animate({left: '-75px'}, 700);
+                $('#container .content-color').delay(400).animate({left: '-40px'}, 700);
             }
         }
         main.menu = false;
@@ -189,9 +189,9 @@ main = {
         if (main.currentSlide < ($('#container .content1 .slide-' + main.index + ' .itemSlide').length - 1)) {
             var top = $('#container .content1 .slide-' + main.index + ' .navigation').position().top;
             $('#container .content1 .slide-' + main.index + ' .navigation').css('top', top + "px");
-            var height = screen.height;
+            var top = ($('#container').height() - $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).height()) / 2;
             $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).css('display', 'block');
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "-" + height + "px", opacity: 0}, 700, function () {
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: "-" + top + "px", opacity: 0}, 700, function () {
                 $(this).hide();
                 main.currentSlide++;
                 main.showContent();
@@ -200,9 +200,9 @@ main = {
     },
     prevSlide: function () {
         if (main.currentSlide > 0) {
-            var height = screen.height;
+            var top = ($('#container').height() - $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).height()) / 2;
             $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).css('display', 'block');
-            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: height + "px", opacity: 0}, 700, function () {
+            $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: top + "px", opacity: 0}, 700, function () {
                 $(this).hide();
                 main.currentSlide--;
                 main.showContent();
