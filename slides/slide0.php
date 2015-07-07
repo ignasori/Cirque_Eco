@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="itemSlide images-slide">
-        <div class="image" data-image="img/images/image01.jpg" data-hover="img/images/image01-hover.jpg">
+        <div class="image hoverChangeImage" data-image="img/images/image01.jpg" data-hover="img/images/image01-hover.jpg">
             <a href="img/images/image01-popup.jpg" rel="gallery-0" class="swipebox">
                 <img src="img/images/image01.jpg">
                 <div class="titleImage">
@@ -34,7 +34,7 @@
                 </div>
             </a>
         </div>
-        <div class="image" data-image="img/images/image02.jpg" data-hover="img/images/image02-hover.jpg">
+        <div class="image hoverChangeImage" data-image="img/images/image02.jpg" data-hover="img/images/image02-hover.jpg">
             <a href="img/images/image02-popup.jpg" rel="gallery-0" class="swipebox">
                 <img src="img/images/image02.jpg">
                 <div class="titleImage">
@@ -42,7 +42,7 @@
                 </div>
             </a>
         </div>
-        <div class="image" data-image="img/images/image03.jpg" data-hover="img/images/image03-hover.jpg">
+        <div class="image hoverChangeImage" data-image="img/images/image03.jpg" data-hover="img/images/image03-hover.jpg">
             <a href="img/images/image03-popup.jpg" rel="gallery-0" class="swipebox">
                 <img src="img/images/image03.jpg">
                 <div class="titleImage">
@@ -50,7 +50,7 @@
                 </div>
             </a>
         </div>
-        <div class="image" data-image="img/images/image04.jpg" data-hover="img/images/image04-hover.jpg">
+        <div class="image hoverChangeImage" data-image="img/images/image04.jpg" data-hover="img/images/image04-hover.jpg">
             <a href="img/images/image04-popup.jpg" rel="gallery-0" class="swipebox">
                 <img src="img/images/image04.jpg">
                 <div class="titleImage">

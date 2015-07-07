@@ -104,7 +104,7 @@
     display: none;
     position: absolute;
     bottom: 0;
-    height: 75%;
+    height: 635px;
     width: 100%;
     background-repeat: no-repeat;
     background-image: url('../img/icons/full-screen+.png');
@@ -317,12 +317,20 @@
 
 #container .content1 .slide .slideContent .image {
     float: left;
-    margin-bottom: 5px;
     cursor: pointer;
+}
+
+#container .content1 .slide .slideContent .image:nth-child(1), #container .content1 .slide .slideContent .image:nth-child(2) {
+    margin-bottom: 10px;
 }
 
 #container .content1 .slide .slideContent .image:nth-child(1), #container .content1 .slide .slideContent .image:nth-child(3) {
     margin-right: 10px;
+}
+
+#container .content1 .slide .slideContent .image a {
+    display: block;
+    height: 224px;
 }
 
 #container .content1 .slide .slideContent .image img {

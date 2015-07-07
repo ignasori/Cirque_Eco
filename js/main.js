@@ -4,7 +4,9 @@ $(document).ready(function () {
 
 main = {
     init: function () {
-        $('.swipebox').swipebox();
+        $('.swipebox').swipebox({
+            hideBarsDelay : 0
+        });
         main.bindEvents();
         main.homeStart();
         $('#container .content1 .slide').hide();
@@ -17,7 +19,7 @@ main = {
     bindEvents: function () {
         $(".content-white nav .menuItem img").click(main.menuClick);
         $("#fullscreen .click").click(main.fullScreenClick);
-        $("#container .content1 .slide .slideContent .image").hover(main.changeImageToReal, main.changeImageToColor);
+        $(".hoverChangeImage").hover(main.changeImageToReal, main.changeImageToColor);
         $('#container .content1 .slide .navigation .arrowDown').click(main.nextSlide);
         $('#container .content1 .slide .navigation .arrowUp').click(main.prevSlide);
     },
@@ -47,9 +49,20 @@ main = {
         });
     },
     menuClick: function () {
-        if (main.index !== $(this).parent().index()) {
+        var index = $(this).parent().index();
+        if ($('#fullscreen').hasClass('open')) {
+            main.fullScreenClick();
+            that = this;
+            setTimeout(function () {
+                main.showContentMenu(index);
+            },710);
+        } else {
+            main.showContentMenu(index);
+        }
+    },
+    showContentMenu: function (index) {
+        if (main.index !== index) {
             if (main.index !== null) {
-                var index = $(this).parent().index();
                 $('#container .content1 .slide-' + main.index + ' .itemSlide').eq(main.currentSlide).animate({marginTop: screen.height + "px"}, 1000, function () {
                     $('#container .content1 .slide-' + main.index).hide();
                     main.index = index;
@@ -57,7 +70,7 @@ main = {
                     main.changeSlide();
                 });
             } else {
-                main.index = $(this).parent().index();
+                main.index = index;
                 $('#container .content1 .slide-' + main.index).show();
                 main.changeSlide();
             }
