@@ -71,10 +71,10 @@
             *****************************
             -->
             <div class="content">
-                <div class="slide slide-0" data-white="img/images/bg-menu-1.png" data-color="img/images/bg-logo1.png" data-background="img/images/background01.jpg">
+                <div class="slide slide-0" data-white="img/images/bg-menu-1.png" data-color="img/images/bg-logo1.png" data-background="img/images/background05.jpg">
                     <?php require_once './slides/slide0.php'; ?>
                 </div>
-                <div class="slide slide-2" data-white="img/images/bg-menu-3.png" data-color="img/images/bg-logo3.png" data-background="img/images/background02.jpg">
+                <div class="slide slide-2" data-white="img/images/bg-menu-3.png" data-color="img/images/bg-logo3.png" data-background="img/images/background04.jpg">
                     <?php require_once './slides/slide2.php'; ?>
                 </div>
                 <div class="slide slide-4" data-white="img/images/bg-menu-5.png" data-color="img/images/bg-logo5.png" data-background="img/images/background03.jpg">

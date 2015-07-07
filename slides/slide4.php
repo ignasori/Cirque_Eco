@@ -26,33 +26,33 @@
         </div>
     </div>
     <div class="itemSlide images-slide">
-        <div class="image" data-image="img/images/image01.jpg" data-hover="img/images/image01-hover.jpg">
+        <div class="image" data-image="img/images/image01-sand.jpg" data-hover="img/images/image01-hover.jpg">
             <a href="img/images/image01-popup.jpg" rel="gallery-0" class="swipebox">
-                <img src="img/images/image01.jpg">
+                <img src="img/images/image01-sand.jpg">
                 <div class="titleImage">
                     <p>WATER<br>KISS</p>
                 </div>
             </a>
         </div>
-        <div class="image" data-image="img/images/image02.jpg" data-hover="img/images/image02-hover.jpg">
+        <div class="image" data-image="img/images/image02-sand.jpg" data-hover="img/images/image02-hover.jpg">
             <a href="img/images/image02-popup.jpg" rel="gallery-0" class="swipebox">
-                <img src="img/images/image02.jpg">
+                <img src="img/images/image02-sand.jpg">
                 <div class="titleImage">
                     <p>JOONDALLOP<br>BIGTOP</p>
                 </div>
             </a>
         </div>
-        <div class="image" data-image="img/images/image03.jpg" data-hover="img/images/image03-hover.jpg">
+        <div class="image" data-image="img/images/image03-sand.jpg" data-hover="img/images/image03-hover.jpg">
             <a href="img/images/image03-popup.jpg" rel="gallery-0" class="swipebox">
-                <img src="img/images/image03.jpg">
+                <img src="img/images/image03-sand.jpg">
                 <div class="titleImage">
                     <p>TORONTO<br>2013</p>
                 </div>
             </a>
         </div>
-        <div class="image" data-image="img/images/image04.jpg" data-hover="img/images/image04-hover.jpg">
+        <div class="image" data-image="img/images/image04-sand.jpg" data-hover="img/images/image04-hover.jpg">
             <a href="img/images/image04-popup.jpg" rel="gallery-0" class="swipebox">
-                <img src="img/images/image04.jpg">
+                <img src="img/images/image04-sand.jpg">
                 <div class="titleImage">
                     <p>DREAM<br>STATE</p>
                 </div>
