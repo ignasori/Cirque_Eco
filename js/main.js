@@ -5,7 +5,7 @@ $(document).ready(function () {
 main = {
     init: function () {
         $('.swipebox').swipebox({
-            hideBarsDelay : 0
+            hideBarsDelay: 0
         });
         main.bindEvents();
         main.homeStart();
@@ -22,6 +22,9 @@ main = {
         $(".hoverChangeImage").hover(main.changeImageToReal, main.changeImageToColor);
         $('#container .content1 .slide .navigation .arrowDown').click(main.nextSlide);
         $('#container .content1 .slide .navigation .arrowUp').click(main.prevSlide);
+        $('#contactForm form').submit(main.sendForm);
+        $('.openContactForm').click(main.manageContactForm);
+        $('#contactForm .closeForm').click(main.manageContactForm);
     },
     homeStart: function () {
         var urlWhite = $('#container .content .slide-0').data('white');
@@ -55,7 +58,7 @@ main = {
             that = this;
             setTimeout(function () {
                 main.showContentMenu(index);
-            },710);
+            }, 710);
         } else {
             main.showContentMenu(index);
         }
@@ -253,5 +256,43 @@ main = {
     changeImageToColor: function () {
         var image = $(this).data('image');
         $(this).children('a').children('img').attr('src', image);
+    },
+    sendForm: function (e) {
+        e.preventDefault();
+        $('.layerloading').addClass('open');
+        $.post($('#contactForm form').attr('action'), 'ajax=true&' + $('#contactForm form').serialize())
+            .done(function (data) {
+                var result = JSON.parse(data);
+                if(result.status) {
+                    $('#contactForm .form .message').text('Email sent correctly, will shortly be contacting you');
+                    $('#contactForm .form .message').css('color', 'green');
+                    $('.layerloading').removeClass('open');
+                    setTimeout(function () {
+                        $('#contactForm .closeForm').trigger('click');
+                    }, 3000);
+                } else {
+                    $('#contactForm .form .message').text('There has been an error in sending mail, try again later');
+                    $('#contactForm .form .message').css('color', 'red');
+                    $('.layerloading').removeClass('open');
+                }
+            })
+            .fail(function (data) {
+                $('#contactForm .form .message').text('There has been an error in sending mail, try again later');
+                $('#contactForm .form .message').css('color', 'red');
+                console.log('Fail: ' + data);
+                $('.layerloading').removeClass('open');
+            });
+    },
+    manageContactForm: function (e) {
+        e.preventDefault();
+        if($('#contactForm').hasClass('open')) {
+            $('#contactForm').removeClass('open');
+        } else {
+            $('#contactForm').addClass('open');
+            var submit = $('input[type="submit"]').val();
+            $('input, textarea').val('');
+            $('input[type="submit"]').val(submit);
+            $('#contactForm .form .message').text('');
+        }
     }
 };
