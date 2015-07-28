@@ -1,3 +1,8 @@
+<div class="background-slideshow-images">
+    <div class="slide-image" data-image="img/images/background01.jpg"></div>
+    <div class="slide-image" data-image="img/images/background02.jpg"></div>
+    <div class="slide-image" data-image="img/images/background03.jpg"></div>
+</div>
 <div class="navigation">
     <div class="arrowUp">
         <img src="img/icons/navigacion-5a.png" alt="navigationArrow"/>

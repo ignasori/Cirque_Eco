@@ -8,6 +8,16 @@ if (!empty($_POST['ajax']) && $_POST['ajax']) {
     <div id="page">
         <div id="fullbackground"></div>
         <div id="fullbackground2"></div>
+        <div class="background-slideshow-show">
+            <div class="navigation">
+                <div class="prev navs">
+                    <img src="img/icons/popup-slideshow-previous.png">
+                </div>
+                <div class="next navs">
+                    <img src="img/icons/popup-slideshow-next.png">
+                </div>
+            </div>
+        </div>
         <section id="home">
             <!--<div class="background left "></div>
             <div class="background right"></div>-->

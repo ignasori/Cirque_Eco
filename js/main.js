@@ -25,6 +25,8 @@ main = {
         $('#contactForm form').submit(main.sendForm);
         $('.openContactForm').click(main.manageContactForm);
         $('#contactForm .closeForm').click(main.manageContactForm);
+        $('.background-slideshow-show .navigation .navs.prev').click(main.prevSlideShowSlide);
+        $('.background-slideshow-show .navigation .navs.next').click(main.nextSlideShowSlide);
     },
     homeStart: function () {
         var urlWhite = $('#container .content .slide-0').data('white');
@@ -116,6 +118,14 @@ main = {
         main.menu = false;
     },
     changeBackground: function () {
+        if($('#container .content .slide-' + main.index + ' .background-slideshow-images').length > 0) {
+            main.backgroundSlideshow();
+        } else {
+            $('.background-slideshow-show .slide-image').remove();
+            if(main.intervalSlide !== null){
+                clearInterval(main.intervalSlide);
+            }
+        }
         var urlWhite = $('#container .content .slide-' + main.index).data('white');
         var urlColor = $('#container .content .slide-' + main.index).data('color');
         var urlBackground = $('#container .content .slide-' + main.index).data('background');
@@ -237,6 +247,9 @@ main = {
             if (main.fullScreenOptions['openColor']) {
                 $("#container .content-white").animate({left: '650px'}, 700);
             }
+            if($('#container .content .slide-' + main.index + ' .background-slideshow-images').length > 0) {
+                $('.background-slideshow-show .navigation').removeClass('active');
+            }
         } else {
             main.fullScreenOptions['openColor'] = false;
             if ($("#container .content-white").position().left === 650) {
@@ -247,6 +260,9 @@ main = {
             $('#fullscreen').addClass('open');
             var left = $(window).width() - 230;
             $('#container').animate({left: left + 'px'}, 700);
+            if($('#container .content .slide-' + main.index + ' .background-slideshow-images').length > 0) {
+                $('.background-slideshow-show .navigation').addClass('active');
+            }
         }
     },
     changeImageToReal: function () {
@@ -256,6 +272,49 @@ main = {
     changeImageToColor: function () {
         var image = $(this).data('image');
         $(this).children('a').children('img').attr('src', image);
+    },
+    backgroundSlideshow: function () {
+        var images = $('#container .content .slide-' + main.index + ' .background-slideshow-images').children('.slide-image').clone();
+        $('.background-slideshow-show').prepend(images);
+        $('.background-slideshow-show .slide-image').each(function () {
+            $(this).css('background-image', "url(" + $(this).data('image') + ")");
+        });
+        $('.background-slideshow-show .slide-image').eq(0).addClass('active');
+        main.animateSlideShow();
+    },
+    intervalSlide: null,
+    animateSlideShow: function () {
+        main.intervalSlide = setInterval(function () { 
+            main.stepSlideshow(true);
+        }, 5000);
+    },
+    stepSlideshow: function (increment) {
+        var length = $('.background-slideshow-show').children('.slide-image').length;
+        var index = $('.background-slideshow-show .slide-image.active').index('.slide-image');
+        var last = index;
+        if(increment) {
+            index ++ ;
+        } else {
+            index --;
+        }
+        if(index > length - 1) {
+            index = 0;
+        }
+        if(index < 0) {
+            index = length - 1;
+        }
+        $('.background-slideshow-show .slide-image').eq(index).addClass('active');
+        $('.background-slideshow-show .slide-image').eq(last).removeClass('active');
+    },
+    nextSlideShowSlide: function () {
+        clearInterval(main.intervalSlide);
+        main.stepSlideshow(true);
+        main.animateSlideShow();
+    },
+    prevSlideShowSlide: function () {
+        clearInterval(main.intervalSlide);
+        main.stepSlideshow(false);
+        main.animateSlideShow();
     },
     sendForm: function (e) {
         e.preventDefault();
