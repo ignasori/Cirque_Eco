@@ -1,7 +1,7 @@
 $(document).ready(function () {
     main.init();
 });
-
+//Test branch
 main = {
     init: function () {
         $('.swipebox').swipebox({
