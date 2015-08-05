@@ -6,7 +6,7 @@ if (!empty($_POST['ajax']) && $_POST['ajax']) {
     include './php/header.php';
     ?>
     <div id="page">
-        <div id="fullbackground"></div>
+        <div id="fullbackground" data-startbackground="img/images/bg-frontpage.jpg"></div>
         <div id="fullbackground2"></div>
         <div class="background-slideshow-show">
             <div class="navigation">

@@ -11,6 +11,7 @@
         <script src="js/libs/jquery-2.1.0.min.js" type="text/javascript"></script>
         <script src="js/libs/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
         <script src="js/libs/jquery.swipebox.min.js" type="text/javascript"></script>
+        <script src="js/libs/jquery.mobile.custom.navigate.min.js" type="text/javascript"></script>
 
         <script src="js/main.js" type="text/javascript"></script>
 
